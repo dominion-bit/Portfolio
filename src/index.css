@@ -1,0 +1,22 @@
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&display=swap');
+   :root {
+          --bg-primary: #0b0f19;
+          --bg-secondary: #0f172a;
+          --surface-card: #1e293b;
+          --surface-hover: #334155;
+          --border-color: #334155;
+          --accent-primary: #38bdf8;
+          --accent-secondary: #818cf8;
+          --accent-glow: rgba(56, 189, 248, 0.15);
+          --text-primary: #f8fafc;
+          --text-secondary: #94a3b8;
+          --text-muted: #64748b;
+          --code-bg: #020617;
+        }
+        @keyframes cursor-blink {
+          0%, 45% { opacity: 1; }
+          50%, 95% { opacity: 0; }
+          100% { opacity: 1; }
+        }
+        .blink-cursor { animation: cursor-blink 1.1s steps(1) infinite; }
