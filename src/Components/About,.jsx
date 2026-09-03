@@ -1,5 +1,5 @@
 import Reveal from "./Reveal";
-import GlowOrb from "./GlowOrb";
+import GlowOrb from "./Gloworb";
 import SectionNumber from "./Sectionnumber";
 
 const SKILL_GROUPS = [

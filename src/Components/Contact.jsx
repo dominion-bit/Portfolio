@@ -1,6 +1,6 @@
 import { useState } from "react";
 import Reveal from "./Reveal";
-import GlowOrb from "./GlowOrb";
+import GlowOrb from "./Gloworb";
 import SectionNumber from "./Sectionnumber";
 
 // Inline icons — no external icon package required.
