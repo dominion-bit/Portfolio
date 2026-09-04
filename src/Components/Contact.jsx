@@ -50,8 +50,8 @@ function InstagramIcon(props) {
 }
 
 const SOCIALS = [
-  { label: "WhatsApp", href: "https://wa.me/234XXXXXXXXXX", Icon: WhatsappIcon },
-  { label: "GitHub", href: "https://github.com/", Icon: GithubIcon },
+  { label: "WhatsApp", href: "https://wa.me/+2347045191276", Icon: WhatsappIcon },
+  { label: "GitHub", href: "https://github.com/dominion-bit/", Icon: GithubIcon },
   { label: "Instagram", href: "https://instagram.com/", Icon: InstagramIcon },
 ];
 
@@ -59,14 +59,14 @@ const initialForm = { name: "", email: "", message: "" };
 
 export default function Contact() {
   const [form, setForm] = useState(initialForm);
-  const [status, setStatus] = useState("idle"); // idle | sending | sent
+  const [status, setStatus] = useState("idle");
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
       setError("Fill in every field before sending.");
@@ -75,13 +75,25 @@ export default function Contact() {
     setError("");
     setStatus("sending");
 
-    // A plain frontend can't send email on its own — wire this up to
-    // a service like Formspree, EmailJS, or your own API route, then
-    // swap this timeout for the real request.
-    setTimeout(() => {
+    try {
+      const response = await fetch("https://formspree.io/f/xkjnzrna", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
+
+      if (!response.ok) throw new Error("Request failed");
+
       setStatus("sent");
       setForm(initialForm);
-    }, 900);
+    } catch (err) {
+      console.error("Contact form submission failed:", err);
+      setStatus("idle");
+      setError("Something went wrong sending that — try again in a moment.");
+    }
   };
 
   return (

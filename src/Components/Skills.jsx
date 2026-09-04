@@ -144,7 +144,7 @@ function IconBadge({ skill }) {
   );
 }
 
-/** Animates a number from 0 up to `target` once `start` becomes true. */
+//  0 t0 number animation
 function useCountUp(target, start, { duration = 1000, delay = 0 } = {}) {
   const [value, setValue] = useState(0);
 
